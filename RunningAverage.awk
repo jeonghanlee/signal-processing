@@ -44,7 +44,6 @@ BEGIN {
 
 END {
     printf "-----------------------------------------------"
-    printf "\nLatenency Max\n"
     printf "\n"
     printf "Total count        : %16d\n",    count
     printf "Mean               : %16.4lf\n", mean0
