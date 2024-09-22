@@ -57,7 +57,7 @@ void saveRootFile(TString filename="1.csv")
   // Save all objects in this file
   hfile.Write();
   hfile.Close();
-  return 0;
+  return;
 }
 
 void plots(TString filename="1.csv.root") 
@@ -70,7 +70,7 @@ void plots(TString filename="1.csv.root")
   
   if (path.IsNull()) { 
     printf("$PWD is not defined, please define them first\n");
-    return NULL;
+    return;
   }
 
   path += "/"; //  just in case...
@@ -79,7 +79,7 @@ void plots(TString filename="1.csv.root")
   TFile afile(path);
   if (afile.IsZombie()) { 
       printf("Error opening file\n"); 
-      return NULL;
+      return;
   }
   TTree* event_tree = nullptr;
   afile.GetObject("tree",event_tree);
@@ -96,8 +96,8 @@ void plots(TString filename="1.csv.root")
   event_tree->Draw("Data");
 
   TH1F *hist = (TH1F*)gPad->GetPrimitive("htemp");
-  hist->SetTitle(Form("MCU Thread Latency Max Histogram at %s", filename.Data()));
-  hist->GetXaxis()->SetTitle("Latency Max (nsec)");
+  hist->SetTitle(Form("Signal Histogram at %s", filename.Data()));
+  hist->GetXaxis()->SetTitle("Value");
   hist->GetXaxis()->CenterTitle();
   hist->GetYaxis()->SetTitle("counts");
   hist->GetYaxis()->CenterTitle();
@@ -113,8 +113,8 @@ void plots(TString filename="1.csv.root")
   // graph->SetLineColor(kRed);
   graph->SetLineWidth(1);
   //  htemp->SetTitle(Form("MCU Thread Latency Max Time Series at %s", filename.Data()));
-  htemp->GetXaxis()->SetTitle("Time (sec)");
-  htemp->GetYaxis()->SetTitle("Latency Max (nsec)");
+  htemp->GetXaxis()->SetTitle("Count");
+  htemp->GetYaxis()->SetTitle("Value");
   graph->Draw("LINE");
 
 
@@ -124,7 +124,7 @@ void plots(TString filename="1.csv.root")
 
   TImage *img = TImage::Create();
   img->FromPad(fCanvas);
-  img->WriteImage(Form("%s_threadlatency.png", filename.Data()));
+  img->WriteImage(Form("%s.png", filename.Data()));
 }
 
 
@@ -141,7 +141,7 @@ void plotHist(TString filename="1.csv.root")
   
   if (path.IsNull()) { 
     printf("$PWD is not defined, please define them first\n");
-    return NULL;
+    return;
   }
 
   path += "/"; //  just in case...
@@ -150,7 +150,7 @@ void plotHist(TString filename="1.csv.root")
   TFile afile(path);
   if (afile.IsZombie()) { 
       printf("Error opening file\n"); 
-      return NULL;
+      return;
   }
   TTree* event_tree = nullptr;
   afile.GetObject("tree",event_tree);
@@ -165,8 +165,8 @@ void plotHist(TString filename="1.csv.root")
   event_tree->Draw("Data");
 
   TH1F *hist = (TH1F*)gPad->GetPrimitive("htemp");
-  hist->SetTitle(Form("MCU Thread Latency Max Histogram at %s", filename.Data()));
-  hist->GetXaxis()->SetTitle("Latency Max (nsec)");
+  hist->SetTitle(Form("Data Histogram at %s", filename.Data()));
+  hist->GetXaxis()->SetTitle("Data");
   hist->GetXaxis()->CenterTitle();
   hist->GetYaxis()->SetTitle("counts");
   hist->GetYaxis()->CenterTitle();
@@ -194,7 +194,7 @@ void plotTSGraph(TString filename="1.csv.root")
   
   if (path.IsNull()) { 
     printf("$PWD is not defined, please define them first\n");
-    return NULL;
+    return;
   }
 
   path += "/"; //  just in case...
@@ -203,7 +203,7 @@ void plotTSGraph(TString filename="1.csv.root")
   TFile afile(path);
   if (afile.IsZombie()) { 
       printf("Error opening file\n"); 
-      return NULL;
+      return;
   }
   TTree* event_tree = nullptr;
   afile.GetObject("tree",event_tree);
@@ -220,8 +220,8 @@ void plotTSGraph(TString filename="1.csv.root")
   graph->SetLineColor(kRed);
   graph->SetLineWidth(1);
   //  htemp->SetTitle(Form("MCU Thread Latency Max Time Series at %s", filename.Data()));
-  htemp->GetXaxis()->SetTitle("Time (sec)");
-  htemp->GetYaxis()->SetTitle("Latency Max (nsec)");
+  htemp->GetXaxis()->SetTitle("Time");
+  htemp->GetYaxis()->SetTitle("Data");
   graph->Draw("LINE");
 
 
