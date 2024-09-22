@@ -18,3 +18,12 @@ root [2] saveRootFile("epics_a_pv/pc2-res10.csv")
 root [3] plots("epics_a_pv/pc1-res10.csv.root")
 root [4] plots("epics_a_pv/pc2-res10.csv.root")
 ```
+
+|![pc1-res10.csv.root.png](pc1-res10.csv.root.png)|
+| :---: |
+|**Figure 1** PC1 Resolution 10. |
+
+
+|![pc2-res10.csv.root.png](pc2-res10.csv.root.png)|
+| :---: |
+|**Figure 2** PC2 Resolution 10. |
