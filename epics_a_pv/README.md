@@ -27,3 +27,5 @@ root [4] plots("epics_a_pv/pc2-res10.csv.root")
 |![pc2-res10.csv.root.png](pc2-res10.csv.root.png)|
 | :---: |
 |**Figure 2** PC2 Resolution 10. |
+camonitor -F, -t sr BR:BEND-PC2:OWFS_PROCESS_T | tee pc2-res10-2.csv | awk -f ../RunningAverage.awk
+camonitor -F, -t sr BR:BEND-PC1:OWFS_PROCESS_T | tee pc1-res10-2.csv | awk -f ../RunningAverage.awk

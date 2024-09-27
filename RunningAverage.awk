@@ -38,7 +38,9 @@ BEGIN {
     mean_user = (mean0_user + mean0)*0.5
     SD_user   = sqrt(((sample_deviation_user)^2)+((sample_deviation)^2))
 
-    printf "Count/x/Mean/SaD/STD : %8d %12.2lf %12.2lf %12.2lf %12.2lf \n", count, x, mean0, sample_deviation,  standard_deviation;
+    system_time = strftime("%Y-%m-%d-%H%M.%S", systime())
+
+    printf "%s Count/x/Mean/SaD/STD : %8d %12.2lf %12.2lf %12.2lf %12.2lf \n", system_time, count, x, mean0, sample_deviation,  standard_deviation;
  
 }
 
